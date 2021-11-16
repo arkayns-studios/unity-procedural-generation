@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad0e4af6e7f9ab0448f6bf79f9276d38, type: 3}
   m_Name: Rule
   m_EditorClassIdentifier: 
-  letter: 
-  results: []
+  letter: A
+  results:
+  - AB

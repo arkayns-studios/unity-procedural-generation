@@ -9,10 +9,10 @@ namespace Arkayns.P.PS {
         [SerializeField]
         private string [] results = null;
 
-        public string GetResults () {
+        public string GetResult () {
             return results [0];
-        } // GetResults
+        } // GetResult
 
     } // Class Rule
 
-} // PS
+} // Namespace PS
