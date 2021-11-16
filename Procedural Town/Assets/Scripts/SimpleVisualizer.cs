@@ -68,13 +68,16 @@ namespace Arkayns.P.PT {
                 }
             }
 
-            foreach (var position in positions) 
-                Instantiate (prefab, position, Quaternion.identity);
+            foreach (var position in positions) {
+                var obj = Instantiate (prefab, position, Quaternion.identity);
+                obj.transform.SetParent (this.transform);
+            }
 
         } // VisualizeSequence
 
         private void DrawLine (Vector3 start, Vector3 end, Color color) {
             GameObject line = new GameObject ("line");
+            line.transform.SetParent (this.transform);
             line.transform.position = start;
             var lineRenderer = line.AddComponent<LineRenderer> ();
             lineRenderer.material = lineMaterial;

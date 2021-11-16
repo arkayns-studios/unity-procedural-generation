@@ -8,9 +8,12 @@ namespace Arkayns.P.PT {
         public string letter;
         [SerializeField]
         private string [] results = null;
+        [SerializeField]
+        private bool isRandom;
 
         public string GetResult () {
-            return results [0];
+            int index = (isRandom) ? Random.Range (0, results.Length) : 0;
+            return results [index];
         } // GetResult
 
     } // Class Rule

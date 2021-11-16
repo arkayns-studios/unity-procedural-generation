@@ -10,6 +10,10 @@ namespace Arkayns.P.PT {
         [Range (0, 10)]
         public int iterationLimit = 1;
 
+        public bool randomIgnoreRuleModifier = true;
+        [Range (0, 1)]
+        public float chanceToIgnoreRule = 0.3f;
+
         private void Start () {
             Debug.Log (GenerateSentence ());
         } // Start
@@ -36,8 +40,15 @@ namespace Arkayns.P.PT {
 
         private void ProcessRulesRecursivelly (StringBuilder newWord, char c, int iteractionIndex) {
             foreach (var rule in rules) {
-                if (rule.letter == c.ToString ())
-                    newWord.Append (GrowRecursive (rule.GetResult (), iteractionIndex+1));
+                if (rule.letter == c.ToString ()) {
+                    if (randomIgnoreRuleModifier && iteractionIndex > 1) {
+                        if(Random.value < chanceToIgnoreRule) 
+                            return;
+                    }
+
+                    newWord.Append (GrowRecursive (rule.GetResult (), iteractionIndex + 1));
+                }
+                    
             }
         } // ProcessRulesRecursivelly
 
