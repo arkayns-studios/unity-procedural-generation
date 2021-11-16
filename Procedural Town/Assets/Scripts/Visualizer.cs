@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace Arkayns.P.PT {
 
-    public class SimpleVisualizer : MonoBehaviour {
+    public class Visualizer : MonoBehaviour {
 
         public LSystemGenerator lSystem;
         private List<Vector3> positions = new List<Vector3> ();
-        public GameObject prefab;
-        public Material lineMaterial;
+
+        public RoadHelper roadHelper;
 
         private int lenght = 8;
         private float angle = 90;
@@ -55,7 +55,7 @@ namespace Arkayns.P.PT {
                     case EncondingLetter.draw:
                     tempPosition = currentPosition;
                     currentPosition += direction * lenght;
-                    DrawLine (tempPosition, currentPosition, Color.red);
+                    roadHelper.PlaceStreetPosition (tempPosition, Vector3Int.RoundToInt(direction), lenght);
                     Lenght -= 2;
                     positions.Add (currentPosition);
                     break;
@@ -68,36 +68,8 @@ namespace Arkayns.P.PT {
                 }
             }
 
-            foreach (var position in positions) {
-                var obj = Instantiate (prefab, position, Quaternion.identity);
-                obj.transform.SetParent (this.transform);
-            }
-
         } // VisualizeSequence
 
-        private void DrawLine (Vector3 start, Vector3 end, Color color) {
-            GameObject line = new GameObject ("line");
-            line.transform.SetParent (this.transform);
-            line.transform.position = start;
-            var lineRenderer = line.AddComponent<LineRenderer> ();
-            lineRenderer.material = lineMaterial;
-            lineRenderer.startColor = color;
-            lineRenderer.endColor = color;
-            lineRenderer.startWidth = 0.1f;
-            lineRenderer.endWidth = 0.1f;
-            lineRenderer.SetPosition (0, start);
-            lineRenderer.SetPosition (1, end);
-        } // DrawLine
-
-        //public enum EncondingLetter {
-        //    unknown = '1',
-        //    save = '[',
-        //    load = ']',
-        //    draw = 'F',
-        //    turnR = '+',
-        //    turnL = '-'
-        //} // EncondingLetter
-
-    } // Class SimpleVisualizer
+    } // Class Visualizer
 
 } // Namespace PT
