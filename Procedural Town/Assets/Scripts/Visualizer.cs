@@ -68,6 +68,7 @@ namespace Arkayns.P.PT {
                 }
             }
 
+            roadHelper.FixRoad ();
         } // VisualizeSequence
 
     } // Class Visualizer
