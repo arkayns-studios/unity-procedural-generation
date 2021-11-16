@@ -1,4 +1,4 @@
-﻿namespace Arkayns.P.PT {
+﻿namespace Arkayns.Procedural.Town {
 
     public enum Direction {
         Up, Down, 

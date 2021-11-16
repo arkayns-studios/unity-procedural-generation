@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Arkayns.P.PT {
+namespace Arkayns.Procedural.Town {
 
     [CreateAssetMenu(menuName = "Procedural City/Rule")]
     public class Rule : ScriptableObject {

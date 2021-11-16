@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using UnityEngine;
 
-namespace Arkayns.P.PT {
+namespace Arkayns.Procedural.Town {
 
     public class LSystemGenerator : MonoBehaviour {
 

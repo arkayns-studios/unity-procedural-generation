@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Arkayns.P.PT {
+namespace Arkayns.Procedural.Town {
 
     public class AgentParameter : MonoBehaviour {
 
