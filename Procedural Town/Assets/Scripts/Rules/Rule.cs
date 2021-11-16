@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Arkayns.P.PS {
+namespace Arkayns.P.PT {
 
     [CreateAssetMenu(menuName = "Procedural City/Rule")]
     public class Rule : ScriptableObject {
@@ -15,4 +15,4 @@ namespace Arkayns.P.PS {
 
     } // Class Rule
 
-} // Namespace PS
+} // Namespace PT

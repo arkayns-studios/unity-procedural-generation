@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 using UnityEngine;
 
-namespace Arkayns.P.PS {
+namespace Arkayns.P.PT {
 
     public class LSystemGenerator : MonoBehaviour {
 
@@ -45,4 +43,4 @@ namespace Arkayns.P.PS {
 
     } // Class LSystemGenerator
 
-} // Namespace PS
+} // Namespace PT
