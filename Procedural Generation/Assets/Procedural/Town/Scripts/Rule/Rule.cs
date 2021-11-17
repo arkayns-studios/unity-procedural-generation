@@ -2,7 +2,7 @@
 
 namespace Arkayns.Procedural.Town {
 
-    [CreateAssetMenu(menuName = "Procedural City/Rule")]
+    [CreateAssetMenu(menuName = "Procedural/Town/Rule")]
     public class Rule : ScriptableObject {
 
         public string letter;

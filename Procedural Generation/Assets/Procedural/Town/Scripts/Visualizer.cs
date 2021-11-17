@@ -9,6 +9,7 @@ namespace Arkayns.Procedural.Town {
         private List<Vector3> positions = new List<Vector3> ();
 
         public RoadHelper roadHelper;
+        public StructureHelper structureHelper;
 
         private int lenght = 8;
         private float angle = 90;
@@ -69,6 +70,7 @@ namespace Arkayns.Procedural.Town {
             }
 
             roadHelper.FixRoad ();
+            structureHelper.PlaceStructureAroundRoad (roadHelper.GetRoadPosition ());
         } // VisualizeSequence
 
     } // Class Visualizer

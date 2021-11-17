@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Arkayns.Procedural.Town {
@@ -8,6 +9,10 @@ namespace Arkayns.Procedural.Town {
         public GameObject roadStraight, roadCorner, road3Way, road4Way, roadEnd;
         private Dictionary<Vector3Int, GameObject> roadDictionary = new Dictionary<Vector3Int, GameObject> ();
         private HashSet<Vector3Int> fixRoadCandidates = new HashSet<Vector3Int> ();
+
+        public List<Vector3Int> GetRoadPosition () {
+            return roadDictionary.Keys.ToList ();
+        } // GetRoadPosition
 
         public void PlaceStreetPosition (Vector3 startPosition, Vector3Int direction, int lenght) {
             var rotation = Quaternion.identity;
