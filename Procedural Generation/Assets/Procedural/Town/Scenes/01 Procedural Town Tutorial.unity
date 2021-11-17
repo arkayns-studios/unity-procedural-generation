@@ -543,7 +543,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f939d7c8ce5e5b848bf273f68eb1fa19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6611407531028321825, guid: e4e3476b5a3e23a479a803b108d04c9c, type: 3}
+  buildingTypes:
+  - prefabs:
+    - {fileID: 2507707691550815495, guid: 59ffc13d9fb598240ac517fe6fb6fd9c, type: 3}
+    - {fileID: 3866452111178995711, guid: 62dd89dfe4948b744ac32fe5d0249467, type: 3}
+    sizeRequired: 1
+    quantity: 5
+    quantityAlreadyPlaced: 0
+  - prefabs:
+    - {fileID: 6611407531028321825, guid: e4e3476b5a3e23a479a803b108d04c9c, type: 3}
+    - {fileID: 6841383266756804668, guid: 32e5c407a77f7744c866fb16abd37898, type: 3}
+    sizeRequired: 1
+    quantity: -1
+    quantityAlreadyPlaced: 0
 --- !u!1 &994772240
 GameObject:
   m_ObjectHideFlags: 0
