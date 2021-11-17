@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +11,12 @@ namespace Arkayns.Procedural.Town {
 
         public void PlaceStructureAroundRoad (List<Vector3Int> roadPositions) {
             Dictionary<Vector3Int, Direction> freeEstateSpots = FindFreeSpaceAroundRoad (roadPositions);
+            List<Vector3Int> blockedPositions = new List<Vector3Int> ();
             foreach (var freeSpot in freeEstateSpots) {
+                if (blockedPositions.Contains(freeSpot.Key)) {
+                    continue;
+                }
+
                 var rotation = Quaternion.identity;
                 switch (freeSpot.Value) {
                     case Direction.Up:
@@ -34,19 +38,49 @@ namespace Arkayns.Procedural.Town {
                     }
 
                     if (buildingTypes[i].IsBuildingAvailable()) {
-                        if (buildingTypes[i].sizeRequired > 1) {
+                        if (buildingTypes [i].sizeRequired > 1) {
+                            var halfSize = Mathf.CeilToInt (buildingTypes [i].sizeRequired / 2.0f);
+                            List<Vector3Int> tempPositionsBlocked = new List<Vector3Int> ();
 
+                            if (VerifyIfBuildingFits (halfSize, freeEstateSpots, freeSpot, ref tempPositionsBlocked)) {
+                                blockedPositions.AddRange (tempPositionsBlocked);
+                                var building = SpawnPrefab (buildingTypes [i].GetPrefab (), freeSpot.Key, rotation);
+                                structuresDictionary.Add (freeSpot.Key, building);
+
+                                foreach (var pos in tempPositionsBlocked) {
+                                    if (!structuresDictionary.ContainsKey(pos))
+                                        structuresDictionary.Add (pos, building);
+                                }
+                                
+                                break;
+                            }
                         } else {
                             var building = SpawnPrefab (buildingTypes [i].GetPrefab (), freeSpot.Key, rotation);
                             structuresDictionary.Add (freeSpot.Key, building);
                         }
                         break;
                     }
-                    
                 }
             }
                 
         } // PlaceStructureAroundRoad
+
+        private bool VerifyIfBuildingFits (int halfSize, Dictionary<Vector3Int, Direction> freeEstateSpots, KeyValuePair<Vector3Int, Direction> freeSpot, ref List<Vector3Int> tempPositionsBlocked) {
+            Vector3Int direction = Vector3Int.zero;
+            direction = (freeSpot.Value == Direction.Down || freeSpot.Value == Direction.Up) ? Vector3Int.right : new Vector3Int (0, 0, 1);
+
+            for (int i = 0; i < halfSize; i++) {
+                var pos1 = freeSpot.Key + direction * i;
+                var pos2 = freeSpot.Key - direction * i;
+
+                if (!freeEstateSpots.ContainsKey(pos1) || !freeEstateSpots.ContainsKey(pos2)) 
+                    return false;
+                
+                tempPositionsBlocked.Add (pos1);
+                tempPositionsBlocked.Add (pos2);
+            }
+            return true;
+        } // VerifyIfBuildingFits
 
         private GameObject SpawnPrefab (GameObject prefab, Vector3Int position, Quaternion rotation) {
             var newStructure = Instantiate (prefab, position, rotation, transform);
