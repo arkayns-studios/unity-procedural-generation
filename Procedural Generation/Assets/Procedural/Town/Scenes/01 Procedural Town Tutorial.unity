@@ -547,12 +547,12 @@ MonoBehaviour:
   - prefabs:
     - {fileID: 3962440082643158057, guid: 5689e4726bc2a8a48bcc36605fba918e, type: 3}
     sizeRequired: 3
-    quantity: 1
+    quantity: 3
     quantityAlreadyPlaced: 0
   - prefabs:
     - {fileID: 5418577439970722738, guid: ec611ae9f609edc4cad3995c701a4072, type: 3}
     sizeRequired: 3
-    quantity: 1
+    quantity: 2
     quantityAlreadyPlaced: 0
   - prefabs:
     - {fileID: 2507707691550815495, guid: 59ffc13d9fb598240ac517fe6fb6fd9c, type: 3}
@@ -566,6 +566,14 @@ MonoBehaviour:
     sizeRequired: 1
     quantity: -1
     quantityAlreadyPlaced: 0
+  naturePrefabs:
+  - {fileID: 4444817063829182789, guid: 573c753f56bd22b40a79ed4fd9ab8aed, type: 3}
+  - {fileID: 5380805434365418974, guid: d2a45bda926bafc4380d5f071897a5db, type: 3}
+  - {fileID: 6315202082271303812, guid: 2918e207393839d4da9ffe1bb063b87b, type: 3}
+  - {fileID: 522670404799392065, guid: 80475cdfa7e2f1740b6d1390ad3c04e4, type: 3}
+  - {fileID: 2906499288724287655, guid: 81bfe059d50b91d4697432147ebf4d1a, type: 3}
+  randomNaturePlacement: 1
+  randomNaturePlacementThreshold: 0.3
 --- !u!1 &994772240
 GameObject:
   m_ObjectHideFlags: 0
